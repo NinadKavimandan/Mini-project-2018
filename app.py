@@ -11,7 +11,7 @@ def index():
 	return current_app.send_static_file('index.html')
 	pass
 
-@app.route("/extract/<text>")
+@app.route("/extract/<text>", methods=['GET'])
 def getSum(text):
 	data = {}
 	data['id'] = 1
