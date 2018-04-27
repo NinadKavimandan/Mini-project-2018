@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text summarizer</title>
+</head>
+<body>
+	<textarea id="usertext">
+	</textarea>
+	</br>
+	<button onclick="getSumText()">Summarizer</button>
+	<p id="sumtext">
+	</p>
+	<script type="text/javascript">
+		function getSumText()
+		{
+			var e = document.getElementById('usertext').value;
+			
+			var xml = new XMLHttpRequest();
+			xml.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200)
+				{
+					document.getElementById('sumtext').innerHTML = this.responseText;
+				}
+			}
+			
+			xml.open("GET", "http://localhost:5000/extract/"+e, true);
+			xml.send();
+		}
+	</script>
+</body>
+</html>
